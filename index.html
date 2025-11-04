@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="author" content="Maxim Podgore">
         <title>Maxim Podgore — Portfolio</title>
         <link rel="stylesheet" href="css/styles.css">
@@ -11,15 +12,27 @@
     </head>
     <body>
         <header class="site-header">
-            <a class="brand" href="index.html">Maxim Podgore</a>
-            <nav class="site-nav" role="navigation">
-                <ul>
-                    <li><a href="index.html" aria-current="page">Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+           <a class="brand" href="index.html">Maxim Podgore</a>
+           <nav class="site-nav desktop" role="navigation">
+               <ul>
+                   <li><a href="index.html" aria-current="page">Home</a></li>
+                   <li><a href="projects.html">Projects</a></li>
+                   <li><a href="resume.html">Resume</a></li>
+                   <li><a href="contact.html">Contact</a></li>
+               </ul>
+           </nav>
+   
+           <details class="site-menu">
+               <summary class="hamburger" aria-label="Toggle navigation">☰</summary>
+               <nav class="site-nav mobile" role="navigation">
+                   <ul>
+                        <li><a href="index.html" aria-current="page">Home</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="resume.html">Resume</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                   </ul>
+               </nav>
+           </details>
         </header>
 
         <main>
@@ -37,7 +50,7 @@
                         <picture>
                             <source type="image/webp" media="(min-width:50rem)" srcset="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80&fm=webp 1400w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80&fm=webp 1000w">
                             <source media="(min-width:50rem)" srcset="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80 1400w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80 1000w">
-                            <img src="images/hero.svg" alt="Team working at desks with laptops — UCSD Information Technology Services" class="responsive-img" loading="lazy" decoding="async" width="1200" height="480">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80" alt="Team working at desks with laptops — UCSD Information Technology Services" class="responsive-img" loading="lazy" decoding="async" width="1200" height="480">
                         </picture>
                         <figcaption class="visually-hidden">UCSD Information Technology Services team</figcaption>
                     </figure>
@@ -55,9 +68,8 @@
                 <work-experience>
                     <figure class="thumb" aria-hidden="false">
                         <picture>
-                            <!-- Serve a higher-quality WebP from Unsplash for large viewports, fallback to local JPEG for smaller devices -->
-                            <source type="image/webp" media="(min-width:50rem)" srcset="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80&fm=webp 1400w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80&fm=webp 1000w">
-                            <source media="(min-width:50rem)" srcset="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80 1400w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80 1000w">
+                            <source type="image/webp" media="(min-width:50rem)" srcset="images/snet.jpeg 1000w">
+                            <source media="(min-width:50rem)" srcset="images/snet.jpeg 1400w, images/snet.jpeg 1000w">
                             <img src="images/snet.jpeg" alt="SingularityNET logo" class="responsive-img" loading="lazy" decoding="async" width="200" height="200" sizes="(max-width:799px) 100vw, 200px">
                         </picture>
                         <figcaption class="visually-hidden">SingularityNET internship work</figcaption>
@@ -77,7 +89,7 @@
                         <picture>
                             <source type="image/webp" media="(min-width:50rem)" srcset="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80&fm=webp 1400w, https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000&q=80&fm=webp 1000w">
                             <source media="(min-width:50rem)" srcset="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80 1400w, https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000&q=80 1000w">
-                            <img src="images/project1.svg" alt="Researcher viewing static analysis visualizations — Stanford Novel Computing Lab" class="responsive-img" loading="lazy" decoding="async" width="200" height="200">
+                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Researcher viewing static analysis visualizations — Stanford Novel Computing Lab" class="responsive-img" loading="lazy" decoding="async" width="200" height="200">
                         </picture>
                         <figcaption class="visually-hidden">Stanford Novel Computing Systems Lab research</figcaption>
                     </figure>
@@ -101,6 +113,6 @@
         <footer>
             <p>© 2025 Maxim</p>
         </footer>
-
+    
     </body>
 </html>

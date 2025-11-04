@@ -1,28 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Roboto+Slab:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Roboto+Slab:wght@400;700&display=swap');
 
 :root{
-  --dark-900: #1f1f1f; /* header/footer */
-  --dark-800: #2e2e2e; /* page background */
-  --dark-700: #343434; /* card/section backgrounds */
-  --muted-gray: #bdbdbd; /* text and icons */
-  --accent: #dedede; /* light elements like image placeholders */
-  --link: #e8e8e8; /* accessible link color over dark background */
-  --visited: #c6a8ff; /* visited link color */
+  --dark-900: #1f1f1f;
+  --dark-800: #2e2e2e;
+  --dark-700: #343434;
+  --muted-gray: #bdbdbd;
+  --accent: #dedede;
+  --link: #e8e8e8;
+  --visited: #c6a8ff;
   --white: #ffffff;
   --gap: 1.25rem;
 }
 
-/* Reset and base */
 *{box-sizing:border-box}
 html{font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size:16px}
-
-/* Use dynamic viewport units */
 body{margin:0; background:var(--dark-800,#2e2e2e); color:var(--white,#fff); line-height:1.45; display:flex; flex-direction:column; min-height:100dvh}
-
-/* make the page container fluid */
 main{flex:1; width: min(95vw, 1600px); margin:1.25rem auto; padding:0 1.25rem; max-width:none}
 
-/* Header */
 .site-header{background:var(--dark-900,#1f1f1f); display:flex; align-items:center; justify-content:space-between; padding:0.8rem 1rem; border-bottom:4px solid rgba(0,0,0,0.25)}
 .brand{color:var(--link,#e8e8e8); font-weight:800; text-decoration:none; font-size:0.95rem}
 .brand:focus,.brand:hover{color:var(--white,#fff)}
@@ -30,27 +25,25 @@ main{flex:1; width: min(95vw, 1600px); margin:1.25rem auto; padding:0 1.25rem; m
 .site-nav a{color:var(--link,#e8e8e8); text-decoration:none; font-size:0.95rem; transition:color 180ms cubic-bezier(.2,.8,.2,1)}
 .site-nav a:focus,.site-nav a:hover{color:var(--white,#fff)}
 .site-nav a[aria-current="page"]{font-weight:700}
+.site-header .hamburger, .site-header summary.hamburger{display:none}
 
 footer{background:var(--dark-900,#1f1f1f); padding:0.8rem 1rem; text-align:center; color:var(--muted-gray,#bdbdbd); border-top:4px solid rgba(0,0,0,0.18); flex-shrink:0}
 
-/* Hero */
 .hero{padding:3dvh 0; display:block}
 .hero h1{margin:0 0 0.6rem 0; font-size:clamp(1.1rem, 3.2dvw, 2rem); font-family: 'Roboto Slab', 'Times New Roman', serif}
 .hero .lead{color:var(--muted-gray,#bdbdbd); max-width:90ch; font-size:clamp(0.95rem, 1rem + 0.4dvw, 1.125rem)}
-
 .cta{margin-top:0.6rem}
 .cta a{color:color-mix(in srgb, var(--link,#e8e8e8) 85%, transparent); text-decoration:underline}
 
-/* Work list container */
+/* Work Experience  */
+
 .work-list{container: work-list / inline-size; margin-top:1.5rem}
 .work-list h3{font-size:1.125rem; margin:0 0 0.8rem 0; color:var(--accent,#dedede)}
 
-/* Work experience entries: support both the custom element <work-experience>
-   and any .work-experience class instances so markup can use either form. */
 .work-list work-experience,
 .work-list .work-experience{
   display:grid;
-  grid-template-columns:1fr; /* stack by default on narrow viewports */
+  grid-template-columns:1fr;
   gap:1rem;
   align-items:start;
   padding:1rem 0;
@@ -68,7 +61,6 @@ footer{background:var(--dark-900,#1f1f1f); padding:0.8rem 1rem; text-align:cente
   box-shadow: 0 10px 30px rgba(0,0,0,0.45);
 }
 
-/* Thumbnail: keep a fixed square on wide viewports, but allow full-width on small */
 .work-list work-experience figure,
 .work-list .work-experience figure,
 .work-list work-experience .thumb,
@@ -85,7 +77,6 @@ footer{background:var(--dark-900,#1f1f1f); padding:0.8rem 1rem; text-align:cente
   flex-shrink:0;
 }
 
-/* Content area */
 .work-list work-experience .we-body,
 .work-list .work-experience .we-body{min-width:0; width:100%; max-width:none}
 .work-list work-experience .we-body *,
@@ -101,78 +92,51 @@ footer{background:var(--dark-900,#1f1f1f); padding:0.8rem 1rem; text-align:cente
 .work-list work-experience .we-body ul,
 .work-list .work-experience .we-body ul{margin:0; padding-left:1.05rem; color:var(--muted-gray,#bdbdbd)}
 
-/* Staggered subtle animation (keep the earlier approach) */
 .work-list work-experience:nth-of-type(1), .work-list .work-experience:nth-of-type(1){animation-delay:0s}
 .work-list work-experience:nth-of-type(2), .work-list .work-experience:nth-of-type(2){animation-delay:0.06s}
 .work-list work-experience:nth-of-type(3), .work-list .work-experience:nth-of-type(3){animation-delay:0.12s}
 
-/* Wider container adjustments */
 @media (min-width:50rem){
-  /* on wider viewports use a two-column grid for each work entry: fixed thumbnail left, content right */
   .work-list work-experience,
-  .work-list .work-experience{grid-template-columns:200px 1fr}
+  .work-list .work-experience{grid-template-columns:160px 1fr}
   .work-list work-experience figure,
   .work-list .work-experience figure,
   .work-list work-experience .thumb,
-  .work-list .work-experience .thumb{min-height:200px; min-width:200px; height:200px}
-
-  /* Ensure thumbnail sits in the first column and content in the second like the projects list */
-  .work-list work-experience > figure, .work-list .work-experience > figure{grid-column:1; grid-row:1; z-index:0; min-width:200px}
+  .work-list .work-experience .thumb{min-height:160px; min-width:160px; height:160px}
+  .work-list work-experience > figure, .work-list .work-experience > figure{grid-column:1; grid-row:1; z-index:0; min-width:160px}
   .work-list work-experience > *:not(figure), .work-list .work-experience > *:not(figure){grid-column:2; min-width:0; z-index:1}
 }
+.work-experience:focus-within{outline:2px solid rgba(200,200,255,0.06); outline-offset:3px}
 
-/* On small screens stack layout and make thumbnail full-width with taller height */
 @media (max-width:799px){
   .work-list {grid-template-columns:1fr; align-items:stretch}
-  .work-list figure{width:100%; height:180px; min-height:180px}
-  /* keep site-nav spacing responsive here so all work-list related responsive rules are together */
   .site-nav ul{gap:0.6rem}
 }
 
-/* Keyframes for fade-in */
 @keyframes fadeIn{
   from{opacity:0; transform: translateY(6px)}
   to{opacity:1; transform: translateY(0)}
 }
 
-/* Links */
 a{color:var(--link,#e8e8e8)}
 a:visited{color:var(--visited,#c6a8ff)}
 a:hover,a:focus{color:var(--white,#fff)}
 
-
-
-/* Small accessibility */
 .site-nav a:focus-visible{outline:2px solid color-mix(in srgb, var(--link,#e8e8e8) 50%, transparent); outline-offset:3px}
 
-/* Contact & profile card styles kept but scoped and with fallbacks */
-/* Profile card (supports both the custom element <profile-card> and a .profile-card class) */
 profile-card, .profile-card{display:block; background:var(--dark-700,#343434); padding:1rem; border-radius:8px; color:var(--muted-gray,#bdbdbd)}
 profile-card .pc-inner, .profile-card .pc-inner{display:flex; gap:1rem; align-items:center}
 profile-card .avatar, .profile-card .avatar{width:64px; height:64px; border-radius:999px; background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--link,#e8e8e8); overflow:hidden}
-
-/* Ensure any image inside avatar fills the rounded frame */
 profile-card .avatar img, .profile-card .avatar img{width:64px; height:64px; display:block; object-fit:cover; object-position:center center; border-radius:999px}
 
-/* Projects list and thumbnail (restored from prior stylesheet) */
 ul{padding-left:0}
-
-
-
-
-/* Buttons under project descriptions: small outlined pills */
 .tag-list{display:flex; gap:0.5rem; margin-top:0.5rem}
 .tag-list button{background:transparent; color:var(--muted-gray,#bdbdbd); border:1px solid rgba(255,255,255,0.08); padding:0.35rem 0.6rem; border-radius:999px; font-size:0.85rem}
 
-/* Sidebar placeholder used in contact and other pages */
 .sidebar-placeholder{background:var(--accent,#dedede); width:240px; height:240px; border-radius:4px}
-
-/* Sidebar image replacement: make picture fill the sidebar frame and ensure
-  the img inside uses object-fit so it crops nicely inside the rounded box. */
 .contact-side .sidebar-image{display:block; width:100%; height:100%; overflow:hidden; border-radius:4px}
 .contact-side .sidebar-image img{width:100%; height:100%; display:block; object-fit:cover; object-position:center center; border-radius:4px}
 
-/* Contact page layout and form styles (restored) */
 .contact-grid{display:grid; grid-template-columns:1fr 240px; gap:2rem; align-items:center; justify-content: center; max-width:1100px; margin:0.5rem auto; padding:0 1rem}
 .contact-left{min-width:0}
 
@@ -192,59 +156,42 @@ ul{padding-left:0}
   .contact-side{order:2}
 }
 
-/* Small utility classes (kept minimal) */
 .muted{color:var(--muted-gray,#bdbdbd)}
-
-/* Example of using CSS variable with fallback in a different context (heading accent) */
 .hero h1{color:var(--accent,#dedede)}
 
-/* Use a transform-based focus state for keyboard users */
-.work-experience:focus-within{outline:2px solid rgba(200,200,255,0.06); outline-offset:3px}
 
-/* has for extra credit */
 .projects-list > li:has(.tag-list){
-  padding: 1em; 
+  padding: 1em;
   margin-bottom: 0.75em;
   border-radius: 6px;
   background: color-mix(in srgb, var(--accent,#dedede) 6%, transparent);
   transition: transform 180ms ease, background-color 180ms ease;
 }
-
 .projects-list > li:has(.tag-list):hover,
 .projects-list > li:has(.tag-list):focus-within{
   transform: translateY(-3px);
   background: color-mix(in srgb, var(--accent,#dedede) 10%, transparent);
 }
 
-/* Responsive image utilities and accessibility helpers */
 .responsive-img{display:block; width:100%; height:auto; max-width:100%; border-radius:8px; object-fit:cover; object-position:center center}
 .hero-figure{margin:0 0 1rem 0; overflow:hidden; border-radius:10px}
 .project-figure{
-  /* Keep the figure strictly square and make the image fill it without overflow.
-     Do NOT force height:100% here — allow aspect-ratio to control height so the
-     figure cannot exceed its grid cell. */
   aspect-ratio: 1 / 1;
   width:100%;
   height:auto;
   overflow:hidden;
   border-radius:6px;
   display:block;
-  min-width:0; /* prevent intrinsic-size overflow inside grid */
+  min-width:0;
 }
 .project-figure img{
   width:100%;
   height:100%;
   display:block;
-  object-fit:cover; /* ensure full coverage while preserving aspect */
+  object-fit:cover;
   object-position:center center;
 }
 
-/* Make the projects list layout place a fixed-size square thumbnail left on wide viewports
-   and stack with a full-width square thumbnail on narrow viewports. Adjust sizes to match
-   the existing work-list thumbnail sizing for visual consistency. */
-/* Projects list layout using flexbox so thumbnails never overflow their frame.
-   - Mobile/narrow: stacked (column) with full-width square thumbnail
-   - Wide: row with fixed-width square thumbnail on the left and flexible content on the right */
 .projects-list li{
   display:flex;
   flex-direction:column;
@@ -252,37 +199,106 @@ ul{padding-left:0}
   align-items:stretch;
   min-height:0;
 }
-
-/* Ensure direct child figure with .project-figure behaves as the square thumbnail */
 .projects-list li > .project-figure,
 .projects-list li > figure.project-figure{
-  width:100%;
+  width:160px;
   aspect-ratio:1 / 1;
   height:auto;
   overflow:hidden;
-  flex:0 0 auto;
-  min-width:0; /* prevent intrinsic size overflow inside flex */
+  flex:0 0 160px;
+  min-width:160px;
 }
 
 @media (min-width:50rem){
   .projects-list li{flex-direction:row; align-items:flex-start; gap:1rem}
   .projects-list li > .project-figure,
-  .projects-list li > figure.project-figure{width:200px; flex:0 0 200px; aspect-ratio:1 / 1}
-  /* Content area becomes flexible and can shrink properly */
+  .projects-list li > figure.project-figure{width:160px; flex:0 0 160px; aspect-ratio:1 / 1}
   .projects-list li > *:not(.project-figure){flex:1 1 0; min-width:0}
 }
 
 @media (max-width:799px){
   .projects-list li{flex-direction:column}
-  .projects-list li > .project-figure{width:100%; aspect-ratio:1 / 1}
 }
 
-/* Simple visually-hidden utility for decorative captions */
 .visually-hidden{border:0; clip:rect(0 0 0 0); clip-path:inset(50%); height:1px; margin:-1px; overflow:hidden; padding:0; position:absolute; white-space:nowrap; width:1px}
 
-/* Thumb-specific image rules for work-experience entries */
 .thumb img{width:100%; height:100%; display:block; object-fit:cover; object-position:center center; border-radius:6px}
 
+@media (max-width:799px){
+  html{font-size:15px}
+  main{width:96vw; margin:0.75rem auto; padding:0 0.75rem}
+  .site-header{position:relative}
+  .site-nav.desktop{display:none}
+  details.site-menu .site-nav.mobile{display:none}
+  details.site-menu summary.hamburger{display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:6px; background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--link); cursor:pointer; list-style:none; user-select:none}
+  details.site-menu summary.hamburger::-webkit-details-marker{display:none}
+  details.site-menu summary.hamburger:active{transform:scale(0.98)}
+  details.site-menu[open] .site-nav.mobile{display:block; position:absolute; left:0; right:0; top:100%; background:var(--dark-900); padding:0.5rem 1rem; box-shadow:0 12px 30px rgba(0,0,0,0.5); z-index:40}
+  details.site-menu[open] .site-nav.mobile ul{flex-direction:column; gap:0.25rem}
+  details.site-menu[open] .site-nav.mobile a{display:block; padding:0.65rem 0.5rem; border-radius:6px}
+  .hero{padding:3dvh 0}
+  .hero .lead{font-size:0.98rem}
+  .work-list work-experience, .work-list .work-experience{grid-template-columns:1fr; gap:0.85rem}
+  .projects-list li{flex-direction:column}
+  .projects-list a, .projects-list button, .site-nav a{padding:0.7rem 0.6rem}
+  .contact-grid{grid-template-columns:1fr; padding:0 0.75rem}
+  .contact-side{order:2}
+  profile-card .avatar, .profile-card .avatar{width:72px; height:72px}
+  profile-card .avatar img, .profile-card .avatar img{width:72px; height:72px}
+  img, .responsive-img, .thumb img, .project-figure img{max-width:100%; height:auto}
+}
+
+@media (min-width:601px) and (max-width:992px){
+  html{font-size:15.5px}
+  main{width:min(92vw,1100px)}
+  .site-nav{display:block}
+  .site-nav ul{gap:0.65rem}
+  .work-list work-experience, .work-list .work-experience{grid-template-columns:160px 1fr}
+  .projects-list li{flex-direction:row}
+  .contact-grid{grid-template-columns:1fr 200px}
+  img, .responsive-img, .thumb img, .project-figure img{max-width:100%; height:auto}
+}
+
+@media (min-width:993px){
+  html{font-size:16px}
+  main{width:min(95vw,1400px)}
+  .site-nav{display:block}
+  .site-nav ul{gap:1rem}
+  .work-list work-experience, .work-list .work-experience{grid-template-columns:160px 1fr}
+  .projects-list li > .project-figure{width:160px; flex:0 0 160px}
+  .contact-grid{grid-template-columns:1fr 240px}
+}
+
+@media (min-width:800px){
+  details.site-menu{display:flex; align-items:center}
+  .site-nav.desktop{display:block}
+  details.site-menu .site-nav.mobile{display:none}
+  details.site-menu .site-nav.mobile ul{display:flex; gap:1rem}
+  details.site-menu summary.hamburger{display:none}
+}
+
+
+.thumb img{width:100%; height:100%; display:block; object-fit:cover; object-position:center center; border-radius:6px}
+
+#resumeFrame{
+  width:100%;
+  height:60vh; /* default for small screens */
+  min-height:320px;
+  border:0;
+  display:block;
+}
+
+@media (min-width:600px){
+  #resumeFrame{ height:68vh; }
+}
+
+@media (min-width:993px){
+  #resumeFrame{ height:75vh; }
+}
+
+@media (min-width:1200px){
+  #resumeFrame{ height:82vh; }
+}
 
 
 
