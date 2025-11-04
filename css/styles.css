@@ -1,0 +1,105 @@
+/* Wireframe-inspired dark theme stylesheet
+   - Matches the visual styling and column layouts from the provided wireframe
+   - No new HTML elements were added; all styling targets existing semantic elements
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+:root{
+  --dark-900: #1f1f1f; /* header/footer */
+  --dark-800: #2e2e2e; /* page background */
+  --dark-700: #3a3a3a; /* card/section backgrounds */
+  --muted-gray: #bdbdbd; /* text and icons */
+  --accent: #dedede; /* light elements like image placeholders */
+  --link: #e8e8e8; /* accessible link color over dark background */
+  --visited: #c6a8ff; /* visited link color */
+  --white: #ffffff;
+  --gap: 1.25rem;
+}
+
+/* Typography and base */
+*{box-sizing:border-box}
+html{font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size:16px}
+/* Make body a column flex container so footer can sit at the bottom */
+body{margin:0; background:var(--dark-800); color:var(--white); line-height:1.45; display:flex; flex-direction:column; min-height:100dvh}
+
+/* Allow main to grow to push footer to the bottom */
+main{flex:1}
+
+/* Header: full-width darker bar, site name left, nav aligned right */
+.site-header{background:var(--dark-900); display:flex; align-items:center; justify-content:space-between; padding:0.6rem 1rem; border-bottom:4px solid rgba(0,0,0,0.25)}
+.site-header h1{font-size:0.9rem; margin:0; font-weight:800; letter-spacing:0.02em}
+.site-header h1::after{content:''}
+
+.site-nav ul{list-style:none; margin:0; padding:0; display:flex; gap:1.05rem; align-items:center}
+.site-nav a{color:var(--link); text-decoration:none; font-size:0.9rem}
+.site-nav a:hover, .site-nav a:focus{color:var(--white)}
+.site-nav a[aria-current="page"]{color:var(--white); font-weight:600}
+
+/* Footer: mirror header look as full-width bar */
+footer{background:var(--dark-900); padding:0.8rem 1rem; text-align:center; color:var(--muted-gray); border-top:4px solid rgba(0,0,0,0.18); flex-shrink:0}
+
+/* Main: two-column layout on wider screens, single column on small screens */
+main{max-width:1100px; margin:1.25rem auto; padding:0 1rem; display:block}
+@media (min-width:900px){
+  main{display:grid; grid-template-columns: 2fr 1fr; gap:2rem}
+}
+
+/* Hero / Intro: mimic large left-aligned block with right placeholder box */
+.hero{padding:2rem 0}
+.hero h1{margin:0 0 0.75rem 0; font-size:1.25rem}
+.hero .lead{color:var(--muted-gray); max-width:60ch}
+
+.hero + nav + main, /* fallback spacing if structure differs */
+section{margin-bottom:1.25rem}
+
+/* Right-side placeholder box used on home/contact pages */
+.sidebar-placeholder{background:var(--accent); width:240px; height:240px; border-radius:4px}
+
+/* Apply the placeholder on the second column via CSS only (no new elements) */
+@media (min-width:900px){
+  /* On pages with 2-column main (home/contact), the right column will implicitly host the placeholder
+     We target the second column by styling the 'aside' if present, otherwise style the second child section.
+  */
+  main > section:nth-of-type(2)::after{
+    content:''; display:block; width:220px; height:220px; background:var(--accent); margin-left:auto; border-radius:4px;
+  }
+}
+
+/* Projects list: stacked project items each with an image box at left and text at right */
+ul{padding-left:0}
+ul li{list-style:none; margin:1rem 0; padding:1rem 0; border-top:1px solid rgba(255,255,255,0.03); display:block}
+@media (min-width:700px){
+  ul li{display:grid; grid-template-columns:200px 1fr; gap:1rem; align-items:start}
+}
+
+ul li .project-thumb{background:var(--accent); width:180px; height:180px; border-radius:4px}
+ul li h3{margin:0 0 0.5rem 0; color:var(--white)}
+ul li h3 a{color:var(--link); text-decoration:none}
+ul li h3 a:hover, ul li h3 a:focus{color:var(--white)}
+ul li p{margin:0 0 0.5rem 0; color:var(--muted-gray)}
+
+/* Buttons under project descriptions: small outlined pills */
+.tag-list{display:flex; gap:0.5rem; margin-top:0.5rem}
+.tag-list button{background:transparent; color:var(--muted-gray); border:1px solid rgba(255,255,255,0.08); padding:0.35rem 0.6rem; border-radius:999px; font-size:0.85rem}
+
+/* Ensure plain anchors (other than nav/project headings) are accessible */
+a{color:var(--link)}
+a:visited{color:var(--visited)}
+a:hover, a:focus{color:var(--white)}
+
+/* Contact page layout: left contact text, right placeholder (two columns) */
+form, profile-card{color:var(--muted-gray)}
+label, input, textarea{color:var(--muted-gray)}
+
+/* Make small adjustments for mobile */
+@media (max-width:699px){
+  .sidebar-placeholder, ul li .project-thumb{width:100%; height:220px}
+  ul li{display:block}
+}
+
+/* Keep some subtle motion for polish */
+.site-nav a{transition:color 160ms ease}
+.hero h1 span{display:inline-block}
+
+
