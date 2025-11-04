@@ -1,14 +1,9 @@
-/* Wireframe-inspired dark theme stylesheet
-   - Matches the visual styling and column layouts from the provided wireframe
-   - No new HTML elements were added; all styling targets existing semantic elements
-*/
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Roboto+Slab:wght@400;700&display=swap');
 
 :root{
   --dark-900: #1f1f1f; /* header/footer */
   --dark-800: #2e2e2e; /* page background */
-  --dark-700: #3a3a3a; /* card/section backgrounds */
+  --dark-700: #343434; /* card/section backgrounds */
   --muted-gray: #bdbdbd; /* text and icons */
   --accent: #dedede; /* light elements like image placeholders */
   --link: #e8e8e8; /* accessible link color over dark background */
@@ -17,89 +12,154 @@
   --gap: 1.25rem;
 }
 
-/* Typography and base */
+/* Reset and base */
 *{box-sizing:border-box}
 html{font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif; font-size:16px}
-/* Make body a column flex container so footer can sit at the bottom */
-body{margin:0; background:var(--dark-800); color:var(--white); line-height:1.45; display:flex; flex-direction:column; min-height:100dvh}
 
-/* Allow main to grow to push footer to the bottom */
-main{flex:1}
+/* Use dynamic viewport units */
+body{margin:0; background:var(--dark-800,#2e2e2e); color:var(--white,#fff); line-height:1.45; display:flex; flex-direction:column; min-height:100dvh}
 
-/* Header: full-width darker bar, site name left, nav aligned right */
-.site-header{background:var(--dark-900); display:flex; align-items:center; justify-content:space-between; padding:0.6rem 1rem; border-bottom:4px solid rgba(0,0,0,0.25)}
-.site-header h1{font-size:0.9rem; margin:0; font-weight:800; letter-spacing:0.02em}
-.site-header h1::after{content:''}
+main{flex:1; max-width:1100px; margin:1.25rem auto; padding:0 1rem}
 
-.site-nav ul{list-style:none; margin:0; padding:0; display:flex; gap:1.05rem; align-items:center}
-.site-nav a{color:var(--link); text-decoration:none; font-size:0.9rem}
-.site-nav a:hover, .site-nav a:focus{color:var(--white)}
-.site-nav a[aria-current="page"]{color:var(--white); font-weight:600}
+/* Header */
+.site-header{background:var(--dark-900,#1f1f1f); display:flex; align-items:center; justify-content:space-between; padding:0.8rem 1rem; border-bottom:4px solid rgba(0,0,0,0.25)}
+.brand{color:var(--link,#e8e8e8); font-weight:800; text-decoration:none; font-size:0.95rem}
+.brand:focus,.brand:hover{color:var(--white,#fff)}
+.site-nav ul{list-style:none; margin:0; padding:0; display:flex; gap:1rem}
+.site-nav a{color:var(--link,#e8e8e8); text-decoration:none; font-size:0.95rem; transition:color 180ms cubic-bezier(.2,.8,.2,1)}
+.site-nav a:focus,.site-nav a:hover{color:var(--white,#fff)}
+.site-nav a[aria-current="page"]{font-weight:700}
 
-/* Footer: mirror header look as full-width bar */
-footer{background:var(--dark-900); padding:0.8rem 1rem; text-align:center; color:var(--muted-gray); border-top:4px solid rgba(0,0,0,0.18); flex-shrink:0}
+footer{background:var(--dark-900,#1f1f1f); padding:0.8rem 1rem; text-align:center; color:var(--muted-gray,#bdbdbd); border-top:4px solid rgba(0,0,0,0.18); flex-shrink:0}
 
-/* Main: two-column layout on wider screens, single column on small screens */
-main{max-width:1100px; margin:1.25rem auto; padding:0 1rem; display:block}
-@media (min-width:900px){
-  main{display:grid; grid-template-columns: 2fr 1fr; gap:2rem}
-}
+/* Hero */
+.hero{padding:3dvh 0; display:block}
+.hero h1{margin:0 0 0.6rem 0; font-size:clamp(1.1rem, 3.2dvw, 2rem); font-family: 'Roboto Slab', 'Times New Roman', serif}
+.hero .lead{color:var(--muted-gray,#bdbdbd); max-width:66ch; font-size:clamp(0.95rem, 1rem + 0.4dvw, 1.125rem)}
+.cta{margin-top:0.6rem}
+.cta a{color:color-mix(in srgb, var(--link,#e8e8e8) 85%, transparent); text-decoration:underline}
 
-/* Hero / Intro: mimic large left-aligned block with right placeholder box */
-.hero{padding:2rem 0}
-.hero h1{margin:0 0 0.75rem 0; font-size:1.25rem}
-.hero .lead{color:var(--muted-gray); max-width:60ch}
+/* Work list container */
+.work-list{container: work-list / inline-size; margin-top:1.5rem}
+.work-list h3{font-size:1.125rem; margin:0 0 0.8rem 0; color:var(--accent,#dedede)}
 
-.hero + nav + main, /* fallback spacing if structure differs */
-section{margin-bottom:1.25rem}
+/* CSS Nesting */
+.work-list{
+  & work-experience{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:1rem;
+    align-items:start;
+    padding:1rem 0;
+    border-top:1px solid rgba(255,255,255,0.03);
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    transition:transform .28s ease, box-shadow .28s ease;
+    animation: fadeIn .6s ease both;
 
-/* Right-side placeholder box used on home/contact pages */
-.sidebar-placeholder{background:var(--accent); width:240px; height:240px; border-radius:4px}
+    &:hover, &:focus-within{
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
 
-/* Apply the placeholder on the second column via CSS only (no new elements) */
-@media (min-width:900px){
-  /* On pages with 2-column main (home/contact), the right column will implicitly host the placeholder
-     We target the second column by styling the 'aside' if present, otherwise style the second child section.
-  */
-  main > section:nth-of-type(2)::after{
-    content:''; display:block; width:220px; height:220px; background:var(--accent); margin-left:auto; border-radius:4px;
+    /* Thumbnail */
+    figure{margin:0; width:100%; height:100%; min-height:84px; border-radius:6px; background:var(--accent,#dedede); display:block}
+
+    /* Content area */
+    .we-body{
+      h4{margin:0 0 0.25rem 0; color:var(--white,#fff); font-size:1.05rem}
+      .meta{color:var(--muted-gray,#bdbdbd); font-size:0.9rem; margin-bottom:0.5rem}
+      ul{margin:0; padding-left:1.05rem; color:var(--muted-gray,#bdbdbd)}
+    }
+
+    /* Staggered subtle animation */
+    &:nth-child(1){animation-delay:0s}
+    &:nth-child(2){animation-delay:0.06s}
+    &:nth-child(3){animation-delay:0.12s}
+  }
+
+  /* Container query */
+  @container (min-width:50rem){
+    & work-experience{grid-template-columns:140px 1fr}
+    & work-experience figure{min-height:120px}
   }
 }
 
-/* Projects list: stacked project items each with an image box at left and text at right */
+/* Keyframes for fade-in */
+@keyframes fadeIn{
+  from{opacity:0; transform: translateY(6px)}
+  to{opacity:1; transform: translateY(0)}
+}
+
+/* Links */
+a{color:var(--link,#e8e8e8)}
+a:visited{color:var(--visited,#c6a8ff)}
+a:hover,a:focus{color:var(--white,#fff)}
+
+/* Responsive adjustments */
+@media (max-width:799px){
+  .work-list work-experience{grid-template-columns:1fr; align-items:stretch}
+  .work-list work-experience figure{height:180px}
+  .site-nav ul{gap:0.6rem}
+}
+
+/* Small accessibility */
+.site-nav a:focus-visible{outline:2px solid color-mix(in srgb, var(--link,#e8e8e8) 50%, transparent); outline-offset:3px}
+
+/* Contact & profile card styles kept but scoped and with fallbacks */
+profile-card{display:block; background:var(--dark-700,#343434); padding:1rem; border-radius:8px; color:var(--muted-gray,#bdbdbd)}
+profile-card .pc-inner{display:flex; gap:1rem; align-items:center}
+.profile-card .avatar{width:64px; height:64px; border-radius:999px; background:rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--link,#e8e8e8)}
+
+/* Projects list and thumbnail (restored from prior stylesheet) */
 ul{padding-left:0}
 ul li{list-style:none; margin:1rem 0; padding:1rem 0; border-top:1px solid rgba(255,255,255,0.03); display:block}
 @media (min-width:700px){
   ul li{display:grid; grid-template-columns:200px 1fr; gap:1rem; align-items:start}
 }
 
-ul li .project-thumb{background:var(--accent); width:180px; height:180px; border-radius:4px}
-ul li h3{margin:0 0 0.5rem 0; color:var(--white)}
-ul li h3 a{color:var(--link); text-decoration:none}
-ul li h3 a:hover, ul li h3 a:focus{color:var(--white)}
-ul li p{margin:0 0 0.5rem 0; color:var(--muted-gray)}
+/* custom element used as thumbnail for projects */
+ul li project-thumb{display:block; background:var(--accent,#dedede); width:180px; height:180px; border-radius:4px}
+ul li h3{margin:0 0 0.5rem 0; color:var(--white,#fff)}
+ul li h3 a{color:var(--link,#e8e8e8); text-decoration:none}
+ul li h3 a:hover, ul li h3 a:focus{color:var(--white,#fff)}
+ul li p{margin:0 0 0.5rem 0; color:var(--muted-gray,#bdbdbd)}
 
 /* Buttons under project descriptions: small outlined pills */
 .tag-list{display:flex; gap:0.5rem; margin-top:0.5rem}
-.tag-list button{background:transparent; color:var(--muted-gray); border:1px solid rgba(255,255,255,0.08); padding:0.35rem 0.6rem; border-radius:999px; font-size:0.85rem}
+.tag-list button{background:transparent; color:var(--muted-gray,#bdbdbd); border:1px solid rgba(255,255,255,0.08); padding:0.35rem 0.6rem; border-radius:999px; font-size:0.85rem}
 
-/* Ensure plain anchors (other than nav/project headings) are accessible */
-a{color:var(--link)}
-a:visited{color:var(--visited)}
-a:hover, a:focus{color:var(--white)}
+/* Sidebar placeholder used in contact and other pages */
+.sidebar-placeholder{background:var(--accent,#dedede); width:240px; height:240px; border-radius:4px}
 
-/* Contact page layout: left contact text, right placeholder (two columns) */
-form, profile-card{color:var(--muted-gray)}
-label, input, textarea{color:var(--muted-gray)}
+/* Contact page layout and form styles (restored) */
+.contact-grid{display:grid; grid-template-columns:1fr 240px; gap:2rem; align-items:center; justify-content: center; max-width:1100px; margin:0.5rem auto; padding:0 1rem}
+.contact-left{min-width:0}
 
-/* Make small adjustments for mobile */
-@media (max-width:699px){
-  .sidebar-placeholder, ul li .project-thumb{width:100%; height:220px}
-  ul li{display:block}
+#contactForm{margin:0.75rem 0}
+#contactForm fieldset{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border:1px solid rgba(255,255,255,0.04); padding:1rem; border-radius:8px}
+#contactForm legend{color:var(--white,#fff); font-weight:700; padding:0 0.25rem}
+#contactForm label{display:block; margin-top:0.75rem; font-size:0.9rem; color:var(--muted-gray,#bdbdbd)}
+#contactForm input,#contactForm textarea{display:block; width:100%; margin-top:0.35rem; padding:0.6rem 0.75rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.05); color:var(--white,#fff); border-radius:6px}
+#contactForm textarea{resize:vertical}
+#contactForm button{margin-top:1rem; background:var(--link,#e8e8e8); color:var(--dark-900,#1f1f1f); border:0; padding:0.6rem 0.9rem; border-radius:6px; font-weight:600; cursor:pointer}
+#contactForm button:hover{filter:brightness(0.95)}
+
+.contact-side .sidebar-placeholder{width:100%; height:100%; min-height:220px}
+
+@media (max-width:799px){
+  .contact-grid{grid-template-columns:1fr; gap:1rem}
+  .contact-side{order:2}
 }
 
-/* Keep some subtle motion for polish */
-.site-nav a{transition:color 160ms ease}
-.hero h1 span{display:inline-block}
+/* Small utility classes (kept minimal) */
+.muted{color:var(--muted-gray,#bdbdbd)}
+
+/* Example of using CSS variable with fallback in a different context (heading accent) */
+.hero h1{color:var(--accent,#dedede)}
+
+/* Use a transform-based focus state for keyboard users */
+work-experience:focus-within{outline:2px solid rgba(200,200,255,0.06); outline-offset:3px}
+
+/* End of stylesheet */
 
 
