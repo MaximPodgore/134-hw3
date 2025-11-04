@@ -24,10 +24,15 @@
       <section class="contact-grid">
         <div class="contact-left">
           <h2>Send a message</h2>
-          <!-- Semantic CSS custom element (no JS) -->
-          <profile-card>
+          <profile-card class="profile-card">
             <div class="pc-inner">
-              <div class="avatar">MP</div>
+              <div class="avatar" aria-hidden="false">
+                <picture>
+                  <!-- SVG keeps the file small and sharp; fallback IMG ensures accessibility -->
+                  <source srcset="images/project1.svg" type="image/svg+xml">
+                  <img src="images/project1.svg" alt="Portrait illustration of Maxim Podgore" class="responsive-img" width="64" height="64" loading="lazy">
+                </picture>
+              </div>
               <div class="meta">
                 <div class="name">Maxim Podgore</div>
                 <div class="role">AI engineer</div>
@@ -58,8 +63,11 @@
           </dialog>
         </div>
 
-        <aside class="contact-side" aria-hidden="true">
-          <div class="sidebar-placeholder"></div>
+        <aside class="contact-side" aria-hidden="false" aria-label="Contact illustration">
+          <picture class="sidebar-image" role="img" aria-label="Illustration of a workspace with contact elements">
+            <source srcset="images/profile.jpg" type="image/svg+xml">
+            <img src="images/profile.jpg" alt="Illustration of a workspace and contact elements" class="responsive-img" loading="lazy">
+          </picture>
         </aside>
       </section>
     </main>

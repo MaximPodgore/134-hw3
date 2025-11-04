@@ -28,9 +28,15 @@
 
       <section>
         <h2>Pinned Repositories</h2>
-        <ul>
+        <ul class="projects-list">
           <li>
-            <project-thumb aria-hidden="true"></project-thumb>
+            <figure class="project-figure" aria-hidden="false">
+              <picture>
+                <source type="image/webp" media="(max-width:900px)" srcset="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80&fm=webp 1200w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80&fm=webp 800w">
+                <source media="(min-width:900px)" srcset="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80 1200w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80 800w">
+                <img src="images/project1.svg" alt="Code editor on a laptop — TuRBO-O repository" class="responsive-img" loading="lazy" decoding="async" width="200" height="200" sizes="(max-width:900px) 100vw, 200px">
+              </picture>
+            </figure>
             <project-content>
               <h3><a href="https://github.com/MaximPodgore/TuRBO-O">TuRBO-O</a></h3>
               <p>Improving the Turbo Algorithm by adding a global kernel updated via Deep Kernel Learning, and the addition of the Upper Confidence Bound Algorithm for better exploration/exploitation.</p>
@@ -42,7 +48,13 @@
             </project-content>
           </li>
           <li>
-            <project-thumb aria-hidden="true"></project-thumb>
+            <figure class="project-figure" aria-hidden="false">
+              <picture>
+                <!-- Local JPEG used for this project; provide sizes + decoding for better delivery/layout stability -->
+                <source type="image/jpeg" srcset="images/blackjack.jpeg">
+                <img src="images/blackjack.jpeg" alt="clip art of Blackjack" class="responsive-img" loading="lazy" decoding="async" width="200" height="200" sizes="(max-width:900px) 100vw, 200px">
+              </picture>
+            </figure>
             <project-content>
               <h3><a href="https://github.com/MaximPodgore/Blackjack-AI">Blackjack-AI</a></h3>
               <p>Blackjack AI using Monte Carlo, TD, and Q-Learning that learns optimal strategies through self-play with real-time visualizations of state values and decisions.</p>
@@ -54,7 +66,13 @@
             </project-content>
           </li>
           <li>
-            <project-thumb aria-hidden="true"></project-thumb>
+            <figure class="project-figure" aria-hidden="false">
+              <picture>
+                <source type="image/webp" media="(min-width:900px)" srcset="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80&fm=webp 1200w, https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80&fm=webp 800w">
+                <source media="(min-width:900px)" srcset="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80 1200w, https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80 800w">
+                <img src="images/project1.svg" alt="Graph visualization on screen — RippleEdits" class="responsive-img" loading="lazy" decoding="async" width="200" height="200" sizes="(max-width:900px) 100vw, 200px">
+              </picture>
+            </figure>
             <project-content>
               <h3><a href="https://github.com/MaximPodgore/RippleEdits">RippleEdits</a></h3>
               <p>Ripple Edits Benchmark extended for SingularityNET's graphRAG system. Evaluates the effects of knowledge editing in RAG systems.</p>
@@ -66,7 +84,13 @@
             </project-content>
           </li>
           <li>
-            <project-thumb aria-hidden="true"></project-thumb>
+            <figure class="project-figure" aria-hidden="false">
+              <picture>
+                <source type="image/webp" media="(min-width:900px)" srcset="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80&fm=webp 1200w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80&fm=webp 800w">
+                <source media="(min-width:900px)" srcset="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80 1200w, https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80 800w">
+                <img src="images/project1.svg" alt="Web app UI on a tablet — CSE-110 project" class="responsive-img" loading="lazy" decoding="async" width="200" height="200" sizes="(max-width:900px) 100vw, 200px">
+              </picture>
+            </figure>
             <project-content>
               <h3><a href="https://github.com/CSE-110-Group-13/cse110-sp24-group13">CSE-110-Group-13</a></h3>
               <p>Commit is a JavaScript web app for developer journaling that combines notes, projects, and tasks with markdown support and deadline tracking.</p>
